@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Joseph Poremba</title>
+  <meta name="description" content="Joseph Poremba — PhD student in Computer Science at the University of British Columbia, working on network flow theory, graph theory, and discrete optimization.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/site.js" defer></script>
+</head>
+<body>
+
+  <!-- Header: same on every page. Move aria-current="page" to the current tab. -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">Joseph Poremba</a>
+      <nav class="nav" aria-label="Main">
+        <a href="index.html" aria-current="page">About</a>
+        <a href="publications.html">Publications</a>
+        <a href="cv.html">CV</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- ========== Intro: role, bio, photo ========== -->
+    <section class="intro">
+      <div>
+        <p class="role"><strong>PhD Student, Computer Science</strong> · Algorithms Lab, University of British Columbia</p>
+
+        <div class="bio">
+          <p>
+            My name is Joseph. I am a PhD student in the UBC Computer Science department’s
+            <a href="https://www.cs.ubc.ca/labs/algorithms/">Algorithms Lab</a>,
+            where I am supervised by <a href="https://bshepherd.ca">Bruce Shepherd</a>.
+            I obtained a Master’s degree in Computer Science at UBC, also supervised by Bruce,
+            and a Bachelor’s degree in Computer Science &amp; Combinatorial Optimization at the
+            University of Waterloo, where I wrote my undergraduate thesis under the supervision of
+            <a href="https://cs.uwaterloo.ca/~nday/">Nancy Day</a>.
+          </p>
+          <p>
+            My research is in network flow theory, and I broadly am interested in graph theory
+            and discrete optimization. I also maintain an interest in formal methods and
+            symmetry breaking.
+          </p>
+          <p>
+            Outside of work, I am big into tabletop RPGs, like Dungeons &amp; Dragons, Pathfinder,
+            and Shadowdark. I have played in several campaigns that have lasted years.
+            Recently my wife and I have also gotten into
+            <button type="button" class="link-button" data-lightbox="birding-photo">birding</button>.
+          </p>
+        </div>
+      </div>
+
+      <figure class="portrait">
+        <img src="assets/photo.jpg" width="960" height="1200"
+             alt="Joseph Poremba holding a camera in front of a glacier lagoon">
+      </figure>
+    </section>
+
+    <!-- ========== Research interests ========== -->
+    <h2 class="section-title">Research interests</h2>
+    <ul class="interests">
+      <li>Multicommodity flows</li>
+      <li>Flow-cut gaps</li>
+      <li>Graph theory</li>
+      <li>Discrete optimization</li>
+      <li>Formal methods</li>
+      <li>Symmetry breaking</li>
+    </ul>
+
+    <!-- ========== Contact ========== -->
+    <h2 class="section-title">Contact</h2>
+    <ul class="contact">
+      <li>
+        <span class="label">Email</span>
+        <span>jporemba AT cs DOT ubc DOT ca</span>
+      </li>
+      <li>
+        <span class="label">ORCID</span>
+        <a href="https://orcid.org/0000-0003-3210-5504">0000-0003-3210-5504</a>
+      </li>
+      <li>
+        <span class="label">Department</span>
+        <span>Department of Computer Science, University of British Columbia, Vancouver, BC</span>
+      </li>
+    </ul>
+
+  </main>
+
+  <!-- Footer: same on every page. -->
+  <footer class="site-footer">
+    <div class="wrap">© 2026 Joseph Poremba</div>
+  </footer>
+
+  <!-- ========== Photo pop-ups (opened by data-lightbox buttons above) ========== -->
+  <dialog class="lightbox" id="birding-photo" aria-label="Birding photo">
+    <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close photo">&times;</button>
+    <figure>
+      <img src="assets/birding.jpg" width="1600" height="1139" loading="lazy"
+           alt="A male Yellow-headed Blackbird singing from a leafy willow branch">
+      <figcaption>Yellow-headed Blackbird, Iona Island</figcaption>
+    </figure>
+  </dialog>
+
+</body>
+</html>

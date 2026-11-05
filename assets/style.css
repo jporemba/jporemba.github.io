@@ -1,0 +1,429 @@
+/* ==========================================================================
+   Joseph Poremba — site styles
+   --------------------------------------------------------------------------
+   1. Design tokens (colours, fonts, sizes)  ← change the look here
+   2. Base elements
+   3. Layout: header, main, footer
+   4. Shared components (section titles, buttons, tags)
+   5. About page
+   6. Publications page
+   7. CV page
+   8. Photo pop-up (lightbox)
+   9. Small screens
+   ========================================================================== */
+
+
+/* 1. Design tokens -------------------------------------------------------- */
+
+:root {
+  /* Light theme */
+  --bg:            #fbfaf7;   /* page background */
+  --surface:       #ffffff;   /* cards, chips */
+  --text:          #1d2125;
+  --muted:         #5d656d;   /* secondary text */
+  --rule:          #e4e1da;   /* borders and dividers */
+  --accent:        #8e1f2b;   /* fleece red: active tab, section titles */
+  --accent-soft:   #f6e9ea;   /* tinted backgrounds behind accent text */
+  --on-accent:     #ffffff;   /* text on an --accent background */
+  --link:          #1f5d8c;   /* glacier-lake blue */
+
+  /* Publication topic tags */
+  --tag-tcs-bg:    #e7f0f7;
+  --tag-tcs-text:  #1f5d8c;
+  --tag-fm-bg:     #f3ece0;
+  --tag-fm-text:   #7a5418;
+
+  /* Photo pop-up (always dark, in both themes) */
+  --overlay:       rgba(10, 12, 14, 0.82);
+  --overlay-text:  #e6e3dd;
+  --close-bg:      #ffffff;
+  --close-text:    #1d2125;
+
+  /* Type */
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;   /* body text */
+  --sans:  "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;  /* headings, UI */
+
+  /* Layout */
+  --page-width:     880px;
+  --gutter:         20px;
+  --portrait-width: 300px;
+  --radius:         12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:            #15181b;
+    --surface:       #1c2024;
+    --text:          #e6e3dd;
+    --muted:         #9aa2aa;
+    --rule:          #2d3237;
+    --accent:        #e0707c;
+    --accent-soft:   #3a2226;
+    --on-accent:     #1a1013;
+    --link:          #7fb6e0;
+    --tag-tcs-bg:    #1d3142;
+    --tag-tcs-text:  #9cc8ea;
+    --tag-fm-bg:     #3a2f1c;
+    --tag-fm-text:   #e3c58f;
+    color-scheme: dark;
+  }
+}
+
+
+/* 2. Base elements -------------------------------------------------------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: 1.075rem;
+  line-height: 1.65;
+}
+
+h1, h2, h3 {
+  font-family: var(--sans);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+a {
+  color: var(--link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+a:hover { color: var(--accent); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+
+/* 3. Layout: header, main, footer ---------------------------------------- */
+
+.wrap {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+}
+.site-header .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 76px;
+}
+
+.brand {
+  font-family: var(--sans);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  gap: 4px;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+}
+.nav a {
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: var(--muted);
+  text-decoration: none;
+}
+.nav a:hover { color: var(--text); background: var(--accent-soft); }
+.nav a[aria-current="page"] { color: var(--accent); background: var(--accent-soft); font-weight: 600; }
+
+main {
+  padding-top: 48px;
+  padding-bottom: 72px;
+}
+
+.site-footer {
+  padding: 24px 0 40px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+
+/* 4. Shared components ---------------------------------------------------- */
+
+/* Page heading (Publications, CV) */
+.page-title { font-size: 2rem; margin: 0 0 8px; }
+.page-intro { color: var(--muted); margin: 0 0 8px; }
+
+/* Small uppercase heading above a section (About page) */
+.section-title {
+  margin: 48px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+
+/* Large buttons (CV page) */
+.button {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.button:hover { color: var(--on-accent); filter: brightness(1.08); }
+.button-secondary { background: transparent; color: var(--text); border: 1px solid var(--rule); }
+.button-secondary:hover { color: var(--accent); border-color: var(--accent); filter: none; }
+
+/* Button that looks like a text link (e.g. "birding" in the bio) */
+.link-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--link);
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.link-button:hover { color: var(--accent); }
+
+
+/* 5. About page ----------------------------------------------------------- */
+
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--portrait-width);
+  gap: 48px;
+  align-items: start;
+}
+
+.role {
+  margin: 0 0 28px;
+  font-family: var(--sans);
+  font-size: 1rem;
+  color: var(--muted);
+}
+.role strong { color: var(--text); font-weight: 600; }
+
+.bio p { margin: 0 0 1.1em; }
+
+.portrait { margin: 0; }
+.portrait img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .06), 0 8px 24px rgba(0, 0, 0, .08);
+}
+
+.interests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--sans);
+  font-size: 0.88rem;
+}
+.interests li {
+  padding: 4px 12px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--surface);
+}
+
+.contact {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--sans);
+  font-size: 0.97rem;
+}
+.contact li { display: flex; gap: 12px; align-items: baseline; }
+.contact .label { min-width: 92px; font-size: 0.85rem; color: var(--muted); }
+
+
+/* 6. Publications page ---------------------------------------------------- */
+
+.author-order-note {
+  margin: 0 0 32px;
+  font-size: 0.92rem;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.pub-year {
+  margin: 36px 0 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.pub-list {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pub {
+  padding: 18px 20px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.pub-title   { margin: 0 0 6px; font-size: 1.04rem; font-weight: 600; line-height: 1.35; }
+.pub-authors { margin: 0; }
+.pub-venue   { margin: 2px 0 10px; color: var(--muted); }
+.pub-venue em { color: var(--text); }
+.me { font-weight: 700; }   /* highlights my name in author lists */
+
+.pub-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+}
+.pub-links a {
+  padding: 2px 9px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  text-decoration: none;
+}
+.pub-links a:hover { border-color: var(--accent); }
+
+.pub-earlier-version {
+  margin: 10px 0 0;
+  padding-top: 10px;
+  border-top: 1px dashed var(--rule);
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* Tags: add a new topic by copying one of these and adding tokens in section 1 */
+.tag            { padding: 2px 9px; border-radius: 6px; font-weight: 600; }
+.tag-tcs        { background: var(--tag-tcs-bg); color: var(--tag-tcs-text); }
+.tag-fm         { background: var(--tag-fm-bg);  color: var(--tag-fm-text); }
+.tag-forthcoming { background: var(--accent-soft); color: var(--accent); }
+
+
+/* 7. CV page -------------------------------------------------------------- */
+
+.cv-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0 28px; }
+
+.cv-embed {
+  display: block;
+  width: 100%;
+  height: 80vh;
+  min-height: 520px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.last-updated { font-family: var(--sans); font-size: 0.82rem; color: var(--muted); }
+
+
+/* 8. Photo pop-up (lightbox) ---------------------------------------------- */
+/* Markup lives at the bottom of index.html; behaviour is in assets/site.js. */
+
+.lightbox {
+  max-width: min(92vw, 1100px);
+  max-height: 92vh;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: visible;
+}
+.lightbox::backdrop { background: var(--overlay); }
+.lightbox figure { margin: 0; }
+.lightbox img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 82vh;
+  border-radius: 10px;
+}
+.lightbox figcaption {
+  margin-top: 10px;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  text-align: center;
+  color: var(--overlay-text);
+}
+.lightbox-close {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--close-bg);
+  color: var(--close-text);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
+}
+
+
+/* 9. Small screens -------------------------------------------------------- */
+
+@media (max-width: 720px) {
+  .site-header { position: static; }
+  .site-header .wrap { padding-top: 10px; padding-bottom: 10px; }
+  .brand { font-size: 1.35rem; }
+  .nav a { padding: 6px 10px; }
+
+  main { padding-top: 28px; }
+
+  .intro { grid-template-columns: 1fr; gap: 28px; }
+  .portrait { order: -1; max-width: 260px; }   /* photo above the bio */
+  .contact li { flex-direction: column; gap: 0; }
+
+  .cv-embed { height: 70vh; }
+
+  .lightbox-close { top: -44px; right: 0; }
+}

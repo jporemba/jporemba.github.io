@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV · Joseph Poremba</title>
+  <meta name="description" content="Curriculum vitae of Joseph Poremba.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+  <!-- Header: same on every page. Move aria-current="page" to the current tab. -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">Joseph Poremba</a>
+      <nav class="nav" aria-label="Main">
+        <a href="index.html">About</a>
+        <a href="publications.html">Publications</a>
+        <a href="cv.html" aria-current="page">CV</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1 class="page-title">Curriculum Vitae</h1>
+    <p class="page-intro">My full CV, including education, publications, talks, teaching, and service.</p>
+
+    <!-- To update the CV: replace assets/cv.pdf (same filename) and change the date below. -->
+    <div class="cv-actions">
+      <a class="button" href="assets/cv.pdf" target="_blank" rel="noopener">Open CV (PDF)</a>
+      <a class="button button-secondary" href="assets/cv.pdf" download="Poremba_CV.pdf">Download</a>
+    </div>
+
+    <iframe class="cv-embed" src="assets/cv.pdf" title="Joseph Poremba CV (PDF)"></iframe>
+    <p class="last-updated">Last updated November 2026.</p>
+  </main>
+
+  <!-- Footer: same on every page. -->
+  <footer class="site-footer">
+    <div class="wrap">© 2026 Joseph Poremba</div>
+  </footer>
+
+</body>
+</html>
